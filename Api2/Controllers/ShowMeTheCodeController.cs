@@ -14,7 +14,7 @@ namespace Api2.Controllers
         [HttpGet]
         public IActionResult GetShowMeTheCode()
         {
-            string strUrl = "https://github.com/YoshitaniJP/DesafioTecnicoSoftplan";
+            string strUrl = "https://github.com/YoshitaniJP/DesafioTecnico-Softplan";
             return Ok(strUrl);
         }
     }
