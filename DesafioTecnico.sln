@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{5656
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api1", "Api1\Api1.csproj", "{5C7E8942-97DD-47EB-976A-BCE3121F6744}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api2", "Api2\Api2.csproj", "{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,21 @@ Global
 		{5C7E8942-97DD-47EB-976A-BCE3121F6744}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C7E8942-97DD-47EB-976A-BCE3121F6744}.Release|x64.ActiveCfg = Release|x64
 		{5C7E8942-97DD-47EB-976A-BCE3121F6744}.Release|x64.Build.0 = Release|x64
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Debug|x64.Build.0 = Debug|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Release|x64.ActiveCfg = Release|Any CPU
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5C7E8942-97DD-47EB-976A-BCE3121F6744} = {5656426D-08ED-4C74-A7F0-15E52CFE82CB}
+		{422364EF-8D4B-4C65-B1F4-B7287E70A5C9} = {5656426D-08ED-4C74-A7F0-15E52CFE82CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F293426-D064-4C03-B32F-1328EBA21932}

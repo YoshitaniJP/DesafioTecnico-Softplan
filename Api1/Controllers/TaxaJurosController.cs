@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api1.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Api1.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api1.Controllers
 {
-    [Route("api/taxaJuros")]
+    [Route("taxaJuros")]
     [ApiController]
-    public class TaxaJurosController : Controller
+    public class TaxaJurosController : ControllerBase
     {
-        private readonly TaxaJurosService _iTaxaJurosService;
+        private readonly TaxaJurosService objTaxaJurosService;
 
-        public TaxaJurosController(TaxaJurosService iTaxaJurosService)
+        public TaxaJurosController(TaxaJurosService _objTaxaJurosService)
         {
-            _iTaxaJurosService = iTaxaJurosService;
+            objTaxaJurosService = _objTaxaJurosService;
         }
 
         [HttpGet]
         public IActionResult GetTaxaJuros()
         {
-            decimal decTaxaJuros = _iTaxaJurosService.GetTaxaJuros();
+            decimal decTaxaJuros = objTaxaJurosService.GetTaxaJuros();
             return Ok(decTaxaJuros);
         }
     }
