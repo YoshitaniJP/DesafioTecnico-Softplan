@@ -16,9 +16,9 @@ namespace Api2.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CalcularJuros([FromQuery]decimal decValorInicial, [FromQuery]int intMeses)
+        public async Task<IActionResult> CalcularJuros(decimal ValorInicial, int Meses)
         {
-            var resultado = await objCalcularJurosService.CalcularJuros(decValorInicial, intMeses);
+            var resultado = await objCalcularJurosService.CalcularJuros(ValorInicial, Meses);
             return Ok(resultado);
         }
     }
