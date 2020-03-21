@@ -1,6 +1,8 @@
-﻿namespace Api1.Services
+﻿using Applications.Interfaces;
+
+namespace Applications.Services
 {
-    public class TaxaJurosService
+    public class TaxaJurosService : ITaxaJurosService
     {
         public decimal GetTaxaJuros()
         {

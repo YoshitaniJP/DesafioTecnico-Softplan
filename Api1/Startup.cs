@@ -1,4 +1,5 @@
-using Api1.Services;
+using Applications.Interfaces;
+using Applications.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,7 @@ namespace Api1
         {
             services.AddControllers();
 
-            services.AddTransient<TaxaJurosService>();
+            services.AddTransient<ITaxaJurosService, TaxaJurosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

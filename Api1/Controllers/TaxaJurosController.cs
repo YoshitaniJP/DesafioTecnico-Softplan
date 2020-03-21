@@ -1,4 +1,4 @@
-﻿using Api1.Services;
+﻿using Applications.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api1.Controllers
@@ -7,17 +7,17 @@ namespace Api1.Controllers
     [ApiController]
     public class TaxaJurosController : ControllerBase
     {
-        private readonly TaxaJurosService objTaxaJurosService;
+        private readonly ITaxaJurosService objITaxaJurosService;
 
-        public TaxaJurosController(TaxaJurosService _objTaxaJurosService)
+        public TaxaJurosController(ITaxaJurosService _objITaxaJurosService)
         {
-            objTaxaJurosService = _objTaxaJurosService;
+            objITaxaJurosService = _objITaxaJurosService;
         }
 
         [HttpGet]
         public IActionResult GetTaxaJuros()
         {
-            decimal decTaxaJuros = objTaxaJurosService.GetTaxaJuros();
+            decimal decTaxaJuros = objITaxaJurosService.GetTaxaJuros();
             return Ok(decTaxaJuros);
         }
     }
