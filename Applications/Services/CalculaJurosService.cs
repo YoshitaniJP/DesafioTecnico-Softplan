@@ -1,19 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using Applications.Interfaces;
+using Infra;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Api2.Services
+namespace Applications.Services
 {
-    public class CalculaJurosService
+    public class CalculaJurosService : ICalculaJurosService
     {
         private HttpClient objClient;
+        private readonly IOptions<Config> objConfig;
 
-        public CalculaJurosService(HttpClient _objClient)
+        public CalculaJurosService(HttpClient _objClient, IOptions<Config> _objConfig)
         {
             objClient = _objClient;
             objClient.DefaultRequestHeaders.Accept.Clear();
             objClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            objConfig = _objConfig;
         }
 
         public async Task<decimal> CalcularJuros(decimal decValorInicial, int intMeses)
@@ -23,14 +29,13 @@ namespace Api2.Services
 
             for (int i = 0; i < intMeses; i++)
                 decResultado = CalcularValorFinal(decResultado, decTaxaJuros);
-            
+
             return Convert.ToDecimal(string.Format("{0:N2}", decResultado));
         }
-        
+
         public async Task<decimal> GetTaxaJuros()
         {
-            string strUrl = "https://localhost:44312/taxaJuros";
-            var response = await objClient.GetAsync(strUrl);
+            var response = await objClient.GetAsync(objConfig.Value.Url_ApiTaxaJuros);
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();

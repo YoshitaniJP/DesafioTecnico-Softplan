@@ -1,4 +1,4 @@
-using Api1.Services;
+using Applications.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TDD
@@ -10,10 +10,10 @@ namespace TDD
         public void TestTaxaJuros()
         {
             decimal decToCompare = 0.01m;
-            
+
             TaxaJurosService objTaxaJurosService = new TaxaJurosService();
             decimal decResultado = objTaxaJurosService.GetTaxaJuros();
-            
+
             Assert.AreEqual(decToCompare, decResultado);
         }
     }

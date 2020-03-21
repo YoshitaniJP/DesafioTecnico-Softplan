@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Api2.Services;
+using Applications.Interfaces;
+using Applications.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api2.Controllers
@@ -8,17 +9,20 @@ namespace Api2.Controllers
     [ApiController]
     public class CalculaJurosController : ControllerBase
     {
-        private readonly CalculaJurosService objCalcularJurosService;
+        private readonly ICalculaJurosService objICalcularJurosService;
         
-        public CalculaJurosController(CalculaJurosService _objCalcularJurosService)
+        public CalculaJurosController(ICalculaJurosService _objICalcularJurosService)
         {
-            objCalcularJurosService = _objCalcularJurosService;
+            objICalcularJurosService = _objICalcularJurosService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> CalcularJuros(decimal ValorInicial, int Meses)
+        public async Task<IActionResult> CalcularJuros([FromQuery] CalculaJurosRequest objRequest)
         {
-            var resultado = await objCalcularJurosService.CalcularJuros(ValorInicial, Meses);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
+            var resultado = await objICalcularJurosService.CalcularJuros(objRequest.ValorInicial, objRequest.Meses);
             return Ok(resultado);
         }
     }
