@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Infra
+﻿namespace Infra
 {
     public class Config
     {

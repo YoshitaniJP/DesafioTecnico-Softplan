@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Applications.Interfaces
+namespace Domain.Interfaces
 {
     public interface ITaxaJurosService
     {

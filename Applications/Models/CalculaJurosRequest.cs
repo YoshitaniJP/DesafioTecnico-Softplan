@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Applications.Models
+namespace Domain.Models
 {
     public class CalculaJurosRequest
     {

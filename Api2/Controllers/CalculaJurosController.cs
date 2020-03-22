@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Applications.Interfaces;
-using Applications.Models;
+using Domain.Interfaces;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api2.Controllers
@@ -9,11 +9,11 @@ namespace Api2.Controllers
     [ApiController]
     public class CalculaJurosController : ControllerBase
     {
-        private readonly ICalculaJurosService objICalcularJurosService;
+        private readonly ICalculaJurosService iCalcularJurosService;
         
-        public CalculaJurosController(ICalculaJurosService _objICalcularJurosService)
+        public CalculaJurosController(ICalculaJurosService _iCalcularJurosService)
         {
-            objICalcularJurosService = _objICalcularJurosService;
+            iCalcularJurosService = _iCalcularJurosService;
         }
 
         [HttpGet]
@@ -22,7 +22,7 @@ namespace Api2.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            var resultado = await objICalcularJurosService.CalcularJuros(objRequest.ValorInicial, objRequest.Meses);
+            decimal resultado = await iCalcularJurosService.CalcularJuros(objRequest.ValorInicial, objRequest.Meses);
             return Ok(resultado);
         }
     }

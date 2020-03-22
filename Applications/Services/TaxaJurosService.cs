@@ -1,6 +1,6 @@
-﻿using Applications.Interfaces;
+﻿using Domain.Interfaces;
 
-namespace Applications.Services
+namespace Domain.Services
 {
     public class TaxaJurosService : ITaxaJurosService
     {

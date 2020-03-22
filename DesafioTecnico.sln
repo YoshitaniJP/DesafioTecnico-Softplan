@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{5656426D-08ED-4C74-A7F0-15E52CFE82CB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5656426D-08ED-4C74-A7F0-15E52CFE82CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api1", "Api1\Api1.csproj", "{5C7E8942-97DD-47EB-976A-BCE3121F6744}"
 EndProject
@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{09811930-66A2-4256-A0FD-FD97F5ED32B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications", "Applications\Applications.csproj", "{F4AC4A91-48B6-482B-8D31-3ED45BAC7CE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Applications\Domain.csproj", "{F4AC4A91-48B6-482B-8D31-3ED45BAC7CE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{41B6ADFF-9302-4766-B7AB-E02227C2F210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{41B6ADFF-9302-4766-B7AB-E02227C2F210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

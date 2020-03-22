@@ -1,4 +1,4 @@
-﻿using Applications.Services;
+﻿using Domain.Services;
 using Infra;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,8 +15,8 @@ namespace TDD
 
         public CalculaJurosTest()
         {
-            objClient = new HttpClient() { BaseAddress = new System.Uri("http://localhost:44312") };
-            objConfig = Options.Create<Config>(new Config { Url_ApiTaxaJuros = "https://localhost:44312/taxaJuros" });
+            objClient = new HttpClient() { BaseAddress = new System.Uri("http://localhost:5000") };
+            objConfig = Options.Create<Config>(new Config { Url_ApiTaxaJuros = "http://localhost:5000/taxaJuros" });
         }
 
         [TestMethod]

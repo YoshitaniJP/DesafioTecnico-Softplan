@@ -1,10 +1,11 @@
-using Applications.Interfaces;
-using Applications.Services;
+using Domain.Interfaces;
+using Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Api1
 {
@@ -23,6 +24,21 @@ namespace Api1
             services.AddControllers();
 
             services.AddTransient<ITaxaJurosService, TaxaJurosService>();
+
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Api Taxa Juros",
+                        Version = "v1",
+                        Description = "Api que retorna a taxa de juros",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Erick Jose de Souza",
+                            Email = "yoshitani.jpo@gmail.com"
+                        }
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +48,12 @@ namespace Api1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Taxa Juros V1");
+            });
 
             app.UseHttpsRedirection();
 

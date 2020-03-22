@@ -1,4 +1,4 @@
-﻿using Applications.Interfaces;
+﻿using Domain.Interfaces;
 using Infra;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -6,7 +6,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Applications.Services
+namespace Domain.Services
 {
     public class CalculaJurosService : ICalculaJurosService
     {
