@@ -25,9 +25,9 @@ namespace Api2
         {
             services.AddControllers();
 
-            services.Configure<Config>(Configuration.GetSection("Config"));
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddHttpClient<ICalculaJurosService, CalculaJurosService>(options => {
-                options.BaseAddress = new Uri(Configuration["Config:Url_ApiTaxaJuros"]);
+                options.BaseAddress = new Uri(Configuration["AppSettings:Url_ApiTaxaJuros"]);
             });
 
             services.AddSwaggerGen(c => {

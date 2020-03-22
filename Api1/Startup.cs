@@ -1,7 +1,10 @@
+using Domain.DAL;
 using Domain.Interfaces;
+using Domain.Repository;
 using Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +27,12 @@ namespace Api1
             services.AddControllers();
 
             services.AddTransient<ITaxaJurosService, TaxaJurosService>();
+            services.AddTransient<TaxaJurosRepository>();
+
+            services.AddDbContext<TaxaJurosContext>(options =>
+                    options.UseInMemoryDatabase(databaseName: "dbInMemory"),
+                    ServiceLifetime.Scoped,
+                    ServiceLifetime.Scoped);
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1",

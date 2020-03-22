@@ -11,12 +11,12 @@ namespace TDD
     public class CalculaJurosTest
     {
         private HttpClient objClient;
-        private readonly IOptions<Config> objConfig;
+        private readonly IOptions<AppSettings> objConfig;
 
         public CalculaJurosTest()
         {
             objClient = new HttpClient() { BaseAddress = new System.Uri("http://localhost:5000") };
-            objConfig = Options.Create<Config>(new Config { Url_ApiTaxaJuros = "http://localhost:5000/taxaJuros" });
+            objConfig = Options.Create<AppSettings>(new AppSettings { Url_ApiTaxaJuros = "http://localhost:5000/taxaJuros" });
         }
 
         [TestMethod]

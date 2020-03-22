@@ -11,9 +11,9 @@ namespace Domain.Services
     public class CalculaJurosService : ICalculaJurosService
     {
         private HttpClient objClient;
-        private readonly IOptions<Config> objConfig;
+        private readonly IOptions<AppSettings> objConfig;
 
-        public CalculaJurosService(HttpClient _objClient, IOptions<Config> _objConfig)
+        public CalculaJurosService(HttpClient _objClient, IOptions<AppSettings> _objConfig)
         {
             objClient = _objClient;
             objClient.DefaultRequestHeaders.Accept.Clear();

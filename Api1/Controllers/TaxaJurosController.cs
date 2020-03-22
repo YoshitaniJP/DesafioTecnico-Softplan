@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api1.Controllers
@@ -17,8 +18,11 @@ namespace Api1.Controllers
         [HttpGet]
         public IActionResult GetTaxaJuros()
         {
-            decimal decTaxaJuros = iTaxaJurosService.GetTaxaJuros();
-            return Ok(decTaxaJuros);
+            TaxaJuros objTaxaJuros = iTaxaJurosService.GetTaxaJuros();
+            if (objTaxaJuros == null)
+                return BadRequest("Nenhuma taxa de juros cadastrado!");
+
+            return Ok(objTaxaJuros.ValorTaxa);
         }
     }
 }

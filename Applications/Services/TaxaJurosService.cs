@@ -1,13 +1,24 @@
-﻿using Domain.Interfaces;
+﻿using Domain.DAL;
+using Domain.Interfaces;
+using Domain.Models;
+using Domain.Repository;
+using System.Linq;
 
 namespace Domain.Services
 {
     public class TaxaJurosService : ITaxaJurosService
     {
-        public decimal GetTaxaJuros()
+        private TaxaJurosRepository taxaJurosRepository;
+
+        public TaxaJurosService(TaxaJurosRepository _taxaJurosRepository)
         {
-            decimal decTaxaJuros = 0.01m;
-            return decTaxaJuros;
+            taxaJurosRepository = _taxaJurosRepository;
+        }
+
+        public TaxaJuros GetTaxaJuros()
+        {
+            TaxaJuros objTaxaJuros = taxaJurosRepository.GetFirstOrDefault();
+            return objTaxaJuros;
         }
     }
 }
