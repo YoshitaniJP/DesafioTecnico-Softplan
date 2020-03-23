@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Polly;
 using System;
 
 namespace Api2
@@ -29,6 +30,8 @@ namespace Api2
             services.AddHttpClient<ICalculaJurosService, CalculaJurosService>(options => {
                 options.BaseAddress = new Uri(Configuration["AppSettings:Url_ApiTaxaJuros"]);
             });
+
+            var policy = Policy.Handle<Exception>().WaitAndRetryAsync(5, x => TimeSpan.FromTicks(15));
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1",

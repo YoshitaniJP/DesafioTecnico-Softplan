@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Polly;
+using Polly.Retry;
 
 namespace Domain.Services
 {
@@ -12,6 +14,7 @@ namespace Domain.Services
     {
         private HttpClient objClient;
         private readonly IOptions<AppSettings> objConfig;
+        private readonly AsyncRetryPolicy<decimal> retry;
 
         public CalculaJurosService(HttpClient _objClient, IOptions<AppSettings> _objConfig)
         {
@@ -20,6 +23,8 @@ namespace Domain.Services
             objClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
             objConfig = _objConfig;
+
+            retry = Policy<decimal>.Handle<HttpRequestException>().RetryAsync(5);
         }
 
         public async Task<decimal> CalcularJuros(decimal decValorInicial, int intMeses)
@@ -35,12 +40,15 @@ namespace Domain.Services
 
         public async Task<decimal> GetTaxaJuros()
         {
-            var response = await objClient.GetAsync(objConfig.Value.Url_ApiTaxaJuros);
-            response.EnsureSuccessStatusCode();
+            return await retry.ExecuteAsync(async () =>
+            {
+                var response = await objClient.GetAsync(objConfig.Value.Url_ApiTaxaJuros);
+                response.EnsureSuccessStatusCode();
 
-            var content = await response.Content.ReadAsStringAsync();
-            decimal decTaxaJuros = JsonConvert.DeserializeObject<decimal>(content);
-            return decTaxaJuros;
+                var content = await response.Content.ReadAsStringAsync();
+                decimal decTaxaJuros = JsonConvert.DeserializeObject<decimal>(content);
+                return decTaxaJuros;
+            });
         }
 
         private static decimal CalcularValorFinal(decimal decValor, decimal decTaxaJuros)

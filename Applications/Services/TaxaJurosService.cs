@@ -1,8 +1,6 @@
-﻿using Domain.DAL;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 using Domain.Models;
 using Domain.Repository;
-using System.Linq;
 
 namespace Domain.Services
 {

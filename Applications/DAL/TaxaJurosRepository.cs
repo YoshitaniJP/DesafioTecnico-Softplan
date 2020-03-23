@@ -10,13 +10,17 @@ namespace Domain.Repository
         {
             using (var context = new TaxaJurosContext())
             {
-                context.TaxaJuros.Add(new TaxaJuros()
+                TaxaJuros objTaxaJuros = context.TaxaJuros.FirstOrDefault(x => x.Id == 1);
+                if (objTaxaJuros == null)
                 {
-                    Id = 1,
-                    ValorTaxa = 0.01m
-                });
+                    context.TaxaJuros.Add(new TaxaJuros()
+                    {
+                        Id = 1,
+                        ValorTaxa = 0.01m
+                    });
 
-                context.SaveChanges();
+                    context.SaveChanges();
+                }
             }
         }
 

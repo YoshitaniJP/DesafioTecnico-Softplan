@@ -1,5 +1,6 @@
 using Domain.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Domain.Repository;
 
 namespace TDD
 {
@@ -11,8 +12,8 @@ namespace TDD
         {
             decimal decToCompare = 0.01m;
 
-            TaxaJurosService objTaxaJurosService = new TaxaJurosService();
-            decimal decResultado = objTaxaJurosService.GetTaxaJuros();
+            TaxaJurosService objTaxaJurosService = new TaxaJurosService(new TaxaJurosRepository());
+            decimal decResultado = objTaxaJurosService.GetTaxaJuros().ValorTaxa;
 
             Assert.AreEqual(decToCompare, decResultado);
         }

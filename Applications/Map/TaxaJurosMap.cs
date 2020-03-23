@@ -9,6 +9,13 @@ namespace Domain.Map
         public void Configure(EntityTypeBuilder<TaxaJuros> builder)
         {
             builder.HasKey(x => x.Id);
+
+            builder.HasData(
+                 new TaxaJuros
+                 {
+                     Id = 1,
+                     ValorTaxa = 0.01m
+                 });
         }
     }
 }

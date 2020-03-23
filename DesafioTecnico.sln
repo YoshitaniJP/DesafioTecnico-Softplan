@@ -11,15 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api2", "Api2\Api2.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A891DE36-619D-47DB-AC51-24E206016F5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDD", "TDD\TDD.csproj", "{38845F7B-7F70-45FF-950A-274038F0A52C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioTecnico.TDD", "TDD\DesafioTecnico.TDD.csproj", "{38845F7B-7F70-45FF-950A-274038F0A52C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F6FF3746-7397-4F27-B945-7F91834BDA89}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{09811930-66A2-4256-A0FD-FD97F5ED32B0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{09811930-66A2-4256-A0FD-FD97F5ED32B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Applications\Domain.csproj", "{F4AC4A91-48B6-482B-8D31-3ED45BAC7CE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioTecnico.Domain", "Applications\DesafioTecnico.Domain.csproj", "{F4AC4A91-48B6-482B-8D31-3ED45BAC7CE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{41B6ADFF-9302-4766-B7AB-E02227C2F210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioTecnico.Infra", "Infra\DesafioTecnico.Infra.csproj", "{41B6ADFF-9302-4766-B7AB-E02227C2F210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
