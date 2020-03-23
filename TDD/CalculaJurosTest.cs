@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Domain.Models;
 
 namespace TDD
 {
@@ -27,7 +28,7 @@ namespace TDD
             decimal decToCompare = 105.10m;
 
             CalculaJurosService objCalculaJurosService = new CalculaJurosService(objClient, objConfig);
-            decimal decResultado = await objCalculaJurosService.CalcularJuros(decValorInicial, intMeses);
+            decimal decResultado = await objCalculaJurosService.CalcularJuros(new CalculaJuros() { ValorEntrada = decValorInicial, Meses = intMeses });
 
             Assert.AreEqual(decToCompare, decResultado);
         }

@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Polly;
-using Polly.Retry;
+using Domain.Models;
 
 namespace Domain.Services
 {
@@ -24,12 +23,12 @@ namespace Domain.Services
             objConfig = _objConfig;
         }
 
-        public async Task<decimal> CalcularJuros(decimal decValorInicial, int intMeses)
+        public async Task<decimal> CalcularJuros(CalculaJuros objCalculaJuros)
         {
-            decimal decResultado = decValorInicial;
+            decimal decResultado = objCalculaJuros.ValorEntrada;
             decimal decTaxaJuros = await GetTaxaJuros();
 
-            for (int i = 0; i < intMeses; i++)
+            for (int i = 0; i < objCalculaJuros.Meses; i++)
                 decResultado = CalcularValorFinal(decResultado, decTaxaJuros);
 
             return Convert.ToDecimal(string.Format("{0:N2}", decResultado));

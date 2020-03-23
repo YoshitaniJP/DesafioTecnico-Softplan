@@ -11,6 +11,7 @@ using Polly;
 using System;
 using System.Net.Http;
 using Polly.Extensions.Http;
+using AutoMapper;
 
 namespace Api2
 {
@@ -27,6 +28,7 @@ namespace Api2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddHttpClient<ICalculaJurosService, CalculaJurosService>(options => {
@@ -81,7 +83,7 @@ namespace Api2
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
                 .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
-                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(10));
+                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(10));
         }
     }
 }

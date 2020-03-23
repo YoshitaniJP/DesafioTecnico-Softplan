@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
 using Domain.Interfaces;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace Api2.Controllers
     public class CalculaJurosController : ControllerBase
     {
         private readonly ICalculaJurosService iCalcularJurosService;
-        
-        public CalculaJurosController(ICalculaJurosService _iCalcularJurosService)
+        private readonly IMapper objMapper;
+
+        public CalculaJurosController(ICalculaJurosService _iCalcularJurosService, IMapper _objMapper)
         {
             iCalcularJurosService = _iCalcularJurosService;
+            objMapper = _objMapper;
         }
 
         [HttpGet]
@@ -22,7 +25,7 @@ namespace Api2.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            decimal resultado = await iCalcularJurosService.CalcularJuros(objRequest.ValorInicial, objRequest.Meses);
+            decimal resultado = await iCalcularJurosService.CalcularJuros(objMapper.Map<CalculaJuros>(objRequest));
             return Ok(resultado);
         }
     }
