@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Polly;
 using System;
+using System.Net.Http;
+using Polly.Extensions.Http;
 
 namespace Api2
 {
@@ -29,10 +31,9 @@ namespace Api2
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddHttpClient<ICalculaJurosService, CalculaJurosService>(options => {
                 options.BaseAddress = new Uri(Configuration["AppSettings:Url_ApiTaxaJuros"]);
-            });
+            }).AddPolicyHandler(GetRetryPolicy());
 
-            var policy = Policy.Handle<Exception>().WaitAndRetryAsync(5, x => TimeSpan.FromTicks(15));
-
+            
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
@@ -73,6 +74,14 @@ namespace Api2
             {
                 endpoints.MapControllers();
             });
+        }
+
+        static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+        {
+            return HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(10));
         }
     }
 }
